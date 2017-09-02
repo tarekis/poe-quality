@@ -9,8 +9,8 @@
         "request": "^2.81.0"
     },
     "bin": {
-        "poe-quality": "bin/test-module.js"
+        "poe-quality": "bin/entry.js"
     },
-    "main": "./main.js",
+    "main": "bin/entry.js",
     "preferGlobal": true
 }

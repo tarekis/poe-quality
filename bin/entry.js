@@ -1,7 +1,12 @@
+#!/usr/bin/env node
+
 const colors = require('colors');
 const inquirer = require('inquirer');
 const _arguments = require('optimist').argv;
 const fs = require('fs');
+const path = require('path');
+
+const configPath = path.join(__dirname, '..', 'config', 'config.json');
 
 const readableProperties = {
     stashTabName: "Stash tab name",
@@ -17,7 +22,7 @@ if ((_arguments.h)||(_arguments.help)) {
 }
 
 if (_arguments._.length === 0) {
-    require('./lib/main');
+    require('../lib/main');
 } else {
     if (_arguments._[0] === 'config') {
         const questions = [{
@@ -66,29 +71,29 @@ if (_arguments._.length === 0) {
             });
         })
         .then(changes => new Promise((resolve, reject) => {
-                fs.readFile('config.json', 'utf8', (error, data) => {
-                    if (error) {
-                        reject(error);
-                    }
+            fs.readFile(configPath, 'utf8', (error, data) => {
+                if (error) {
+                    reject(error);
+                }
 
-                    const newOptions = {};
-                    const readablePropertyToPropertyMap = {};
-                    for (const key in readableProperties) {
-                        readablePropertyToPropertyMap[readableProperties[key]] = key;
-                    }
+                const newOptions = {};
+                const readablePropertyToPropertyMap = {};
+                for (const key in readableProperties) {
+                    readablePropertyToPropertyMap[readableProperties[key]] = key;
+                }
 
-                    Object.keys(changes).forEach(answerProperty => {
-                        newOptions[readablePropertyToPropertyMap[answerProperty]] = changes[answerProperty];
-                    });
-            
-                    const oldOptions = JSON.parse(data);
-                    resolve(Object.assign(oldOptions, newOptions));
+                Object.keys(changes).forEach(answerProperty => {
+                    newOptions[readablePropertyToPropertyMap[answerProperty]] = changes[answerProperty];
                 });
+        
+                const oldOptions = JSON.parse(data);
+                resolve(Object.assign(oldOptions, newOptions));
+            });
         })
         .then(newOptions => new Promise((resolve, reject) => {
-            fs.writeFile('config.json', JSON.stringify(newOptions), (err) => {
+            fs.writeFile(configPath, JSON.stringify(newOptions), (err) => {
                 if (err) throw err;
-                console.log('Your configuarion has been saved!'.green.bold + '  Run ' + 'poe-quality'.bold.white + ' to calculate combinations!');
+                console.log('Your configuarion has been saved!'.green.bold + ' Run ' + 'poe-quality'.bold.white + ' to calculate combinations!');
             });
         })))
         .catch(error => {
