@@ -1,0 +1,14 @@
+{
+    "name": "poe-quality",
+    "version": "1.0.0",
+    "dependencies": {
+        "colors": "^1.1.2",
+        "ora": "^1.3.0",
+        "request": "^2.81.0"
+    },
+    "bin": {
+        "poe-quality": "bin/test-module.js"
+    },
+    "main": "./main.js",
+    "preferGlobal": true
+}
