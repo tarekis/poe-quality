@@ -1,6 +1,17 @@
 {
     "name": "poe-quality",
     "version": "1.0.0",
+    "description": "Calculates valid vendor combinations for all flasks/gems/maps from public POE stash",
+    "author": "Clemens Himmer <clemens.himmer@hotmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tarekis/poe-quality"
+    },
+    "keywords": [
+        "poe",
+        "quality",
+        "subsum"
+    ],
     "dependencies": {
         "colors": "^1.1.2",
         "inquirer": "^3.2.3",
@@ -12,5 +23,6 @@
         "poe-quality": "bin/entry.js"
     },
     "main": "bin/entry.js",
-    "preferGlobal": true
+    "preferGlobal": true,
+    "license" : "MIT"
 }
