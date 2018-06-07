@@ -38,7 +38,7 @@ poe-quality config
 How to get your session id needed to search for your stash:
 1. Visit https://www.pathofexile.com/
 2. Log in if you haven't already.
-3. Press 12, you will enter the developer console and search for the website's cookies. Here's a [tutorial](https://developers.google.com/web/tools/chrome-devtools/manage-data/cookies) for chrome.
+3. Press F12, you will enter the developer console and search for the website's cookies. Here's a [tutorial](https://developers.google.com/web/tools/chrome-devtools/manage-data/cookies) for chrome.
 4. Find the cookie `POESESSID`, this is the session id you need to use.
 
 Run this command to get all combinations for your configured stash.
