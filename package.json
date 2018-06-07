@@ -1,6 +1,6 @@
 {
     "name": "poe-quality",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Calculates valid vendor combinations for all flasks/gems/maps from public POE stash",
     "author": "Clemens Himmer <clemens.himmer@hotmail.com>",
     "repository": {
